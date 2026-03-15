@@ -5,16 +5,12 @@ import { Product } from "../data/products"
 
 interface ProductBottleScrollProps {
   product: Product
-  containerRef: React.RefObject<HTMLDivElement>
 }
 
-export default function ProductBottleScroll({ product, containerRef }: ProductBottleScrollProps) {
+export default function ProductBottleScroll({ product }: ProductBottleScrollProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  })
+  const { scrollYProgress } = useScroll()
 
   // Preload images
   const images = useRef<HTMLImageElement[]>([])
@@ -119,13 +115,11 @@ export default function ProductBottleScroll({ product, containerRef }: ProductBo
   }, [product])
 
   return (
-    <div ref={containerRef} className="h-[500vh] w-full relative z-10">
-      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
+    <div className="fixed inset-0 w-full h-full z-0 overflow-hidden flex items-center justify-center pointer-events-none">
         <canvas
           ref={canvasRef}
-          className="w-full h-full object-cover pointer-events-none"
+          className="w-full h-full object-cover"
         />
-      </div>
     </div>
   )
 }

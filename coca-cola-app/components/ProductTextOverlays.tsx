@@ -5,14 +5,10 @@ import { Product } from "../data/products"
 
 interface ProductTextOverlaysProps {
   product: Product
-  containerRef: React.RefObject<HTMLDivElement>
 }
 
-export default function ProductTextOverlays({ product, containerRef }: ProductTextOverlaysProps) {
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  })
+export default function ProductTextOverlays({ product }: ProductTextOverlaysProps) {
+  const { scrollYProgress } = useScroll()
 
   // Section 1: Intro (0.0 to 0.2)
   const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.25], [1, 1, 0, 0])
@@ -31,7 +27,7 @@ export default function ProductTextOverlays({ product, containerRef }: ProductTe
   const y4 = useTransform(scrollYProgress, [0.75, 0.95], [50, -50])
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-20">
+    <div className="fixed inset-0 pointer-events-none z-10">
       {/* Section 1 */}
       <motion.div
         style={{ opacity: opacity1, y: y1 }}
