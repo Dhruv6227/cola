@@ -37,12 +37,7 @@ export default function ProductTextOverlays({ product, containerRef }: ProductTe
         style={{ opacity: opacity1, y: y1 }}
         className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pt-10"
       >
-        <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tight drop-shadow-2xl">
-          {product.section1.title}
-        </h1>
-        <p className="text-xl md:text-3xl font-medium tracking-wide drop-shadow-lg max-w-2xl">
-          {product.section1.subtitle}
-        </p>
+        {/* Intentionally left blank so video text can shine */}
       </motion.div>
 
       {/* Section 2 */}

@@ -64,15 +64,17 @@ export default function ProductBottleScroll({ product, containerRef }: ProductBo
             let drawWidth, drawHeight, startX, startY
 
             if (imgAspect > canvasAspect) {
-                drawWidth = canvas.width
-                drawHeight = canvas.width / imgAspect
-                startX = 0
-                startY = (canvas.height - drawHeight) / 2
-            } else {
+                // Image is wider than canvas
                 drawHeight = canvas.height
                 drawWidth = canvas.height * imgAspect
                 startY = 0
                 startX = (canvas.width - drawWidth) / 2
+            } else {
+                // Image is taller than canvas
+                drawWidth = canvas.width
+                drawHeight = canvas.width / imgAspect
+                startX = 0
+                startY = (canvas.height - drawHeight) / 2
             }
 
             ctx.drawImage(img, startX, startY, drawWidth, drawHeight)
@@ -97,15 +99,17 @@ export default function ProductBottleScroll({ product, containerRef }: ProductBo
                 let drawWidth, drawHeight, startX, startY
 
                 if (imgAspect > canvasAspect) {
-                    drawWidth = canvas.width
-                    drawHeight = canvas.width / imgAspect
-                    startX = 0
-                    startY = (canvas.height - drawHeight) / 2
-                } else {
+                    // Image is wider than canvas
                     drawHeight = canvas.height
                     drawWidth = canvas.height * imgAspect
                     startY = 0
                     startX = (canvas.width - drawWidth) / 2
+                } else {
+                    // Image is taller than canvas
+                    drawWidth = canvas.width
+                    drawHeight = canvas.width / imgAspect
+                    startX = 0
+                    startY = (canvas.height - drawHeight) / 2
                 }
 
                 ctx.drawImage(img, startX, startY, drawWidth, drawHeight)
@@ -119,7 +123,7 @@ export default function ProductBottleScroll({ product, containerRef }: ProductBo
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
         <canvas
           ref={canvasRef}
-          className="w-full h-full max-w-[800px] object-contain pointer-events-none"
+          className="w-full h-full object-cover pointer-events-none"
         />
       </div>
     </div>
