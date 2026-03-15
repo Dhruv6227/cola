@@ -10,21 +10,24 @@ interface ProductTextOverlaysProps {
 export default function ProductTextOverlays({ product }: ProductTextOverlaysProps) {
   const { scrollYProgress } = useScroll()
 
-  // Section 1: Intro (0.0 to 0.2)
-  const opacity1 = useTransform(scrollYProgress, [0, 0.1, 0.2, 0.25], [1, 1, 0, 0])
-  const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -50])
+  // Text overlays are compressed to appear within the first ~40% of page scroll
+  // to stay synchronized with the bottle animation (which completes at 55%)
 
-  // Section 2: Fizz (0.25 to 0.45)
-  const opacity2 = useTransform(scrollYProgress, [0.2, 0.25, 0.4, 0.45], [0, 1, 1, 0])
-  const y2 = useTransform(scrollYProgress, [0.25, 0.4], [50, -50])
+  // Section 1: Intro (0% to 8%)
+  const opacity1 = useTransform(scrollYProgress, [0, 0.04, 0.06, 0.08], [1, 1, 0, 0])
+  const y1 = useTransform(scrollYProgress, [0, 0.08], [0, -50])
 
-  // Section 3: Moments (0.5 to 0.7)
-  const opacity3 = useTransform(scrollYProgress, [0.45, 0.5, 0.65, 0.7], [0, 1, 1, 0])
-  const y3 = useTransform(scrollYProgress, [0.5, 0.65], [50, -50])
+  // Section 2: Fizz (8% to 18%)
+  const opacity2 = useTransform(scrollYProgress, [0.08, 0.1, 0.16, 0.18], [0, 1, 1, 0])
+  const y2 = useTransform(scrollYProgress, [0.1, 0.16], [50, -50])
 
-  // Section 4: Refreshment (0.75 to 0.95)
-  const opacity4 = useTransform(scrollYProgress, [0.7, 0.75, 0.9, 0.95], [0, 1, 1, 0])
-  const y4 = useTransform(scrollYProgress, [0.75, 0.95], [50, -50])
+  // Section 3: Moments (18% to 28%)
+  const opacity3 = useTransform(scrollYProgress, [0.18, 0.2, 0.26, 0.28], [0, 1, 1, 0])
+  const y3 = useTransform(scrollYProgress, [0.2, 0.26], [50, -50])
+
+  // Section 4: Refreshment (28% to 38%)
+  const opacity4 = useTransform(scrollYProgress, [0.28, 0.3, 0.36, 0.38], [0, 1, 1, 0])
+  const y4 = useTransform(scrollYProgress, [0.3, 0.38], [50, -50])
 
   return (
     <div className="fixed inset-0 pointer-events-none z-10">
