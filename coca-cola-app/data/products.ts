@@ -5,6 +5,8 @@ export interface Product {
     price: string
     description: string
     folderPath: string
+    frameCount: number
+    frameExtension: string
     themeColor: string
     gradient: string
     features: string[]
@@ -39,6 +41,8 @@ export const products: Product[] = [
         price: "₹60",
         description: "Iconic flavor • Ice cold refreshment • Legendary taste",
         folderPath: "/images/classic",
+        frameCount: 200,
+        frameExtension: "webp",
         themeColor: "#E61C2D",
         gradient: "linear-gradient(135deg,#E61C2D,#9B0000)",
         features: ["Iconic Taste", "Perfect Fizz", "Ice Cold Refreshment"],
@@ -87,6 +91,8 @@ export const products: Product[] = [
         price: "₹60",
         description: "No sugar • Perfect crunch • Legendary taste",
         folderPath: "/images/zero",
+        frameCount: 160,
+        frameExtension: "jpg",
         themeColor: "#000000",
         gradient: "linear-gradient(135deg, #000000, #333333)",
         features: ["Zero Sugar", "Maximum Taste", "Light and Crisp"],
@@ -135,6 +141,8 @@ export const products: Product[] = [
         price: "₹65",
         description: "Fruity edge • Deep flavor • Smooth refreshment",
         folderPath: "/images/cherry",
+        frameCount: 200,
+        frameExtension: "webp",
         themeColor: "#C2185B",
         gradient: "linear-gradient(135deg, #C2185B, #6A002A)",
         features: ["Cherry Twist", "Smooth Finish", "Bold Flavor"],

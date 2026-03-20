@@ -15,9 +15,10 @@ export default function ProductBottleScroll({ product }: ProductBottleScrollProp
   
   const { scrollYProgress } = useScroll()
 
-  // Preload images — all three products (classic, zero, cherry) have 200 frames
+  // Preload images — each product can have a different frame count and extension
   const images = useRef<HTMLImageElement[]>([])
-  const frameCount = 200
+  const frameCount = product.frameCount
+  const frameExtension = product.frameExtension
 
   useEffect(() => {
     // Clear images array on product change
@@ -25,10 +26,10 @@ export default function ProductBottleScroll({ product }: ProductBottleScrollProp
     
     for (let i = 1; i <= frameCount; i++) {
         const img = new Image()
-        img.src = `${product.folderPath}/${i}.webp`
+        img.src = `${product.folderPath}/${i}.${frameExtension}`
         images.current.push(img)
     }
-  }, [product])
+  }, [product, frameCount, frameExtension])
 
   // Shared draw function for DRY code
   const drawFrame = useCallback((img: HTMLImageElement) => {
